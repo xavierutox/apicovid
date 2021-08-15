@@ -32,13 +32,26 @@ def root ():
         datos["name"]=df.columns[i]
         datos["casos"]=df_list[0][i]
         casos.append(datos)
-    print(casos)
     return {
         "region":casos[0]["casos"],
         "comuna":casos[2]["casos"],
         "poblacion":casos[4]["casos"],
         "casos": casos[5:]
     }
-
-if __name__ == "__main__":
-	app.run(host="0.0.0.0", port=4000)
+@app.route("/Casos")
+@cross_origin()
+def casos():
+    url = 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto5/TotalesNacionales.csv'
+    df = pd.read_csv(url)
+    row = df.loc[df["Fecha"]=="Casos nuevos totales"]
+    df_list = row.values.tolist()
+    casos=[]
+    datos={}
+    for i in range(len(df_list[0])):
+        datos={}
+        datos["name"]=df.columns[i]
+        datos["casos"]=df_list[0][i]
+        casos.append(datos)
+    return {
+        "casos": casos[1:]
+    }
