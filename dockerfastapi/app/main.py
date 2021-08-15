@@ -1,22 +1,18 @@
 import pandas as pd
 
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+from flask import Flask, request
+from flask_restful import Resource, Api, reqparse
+from flask_cors import CORS, cross_origin
  
-app = FastAPI()
-
+app = Flask(__name__)
+api = Api(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 origins = ["*"]
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
- 
-@app.get("/")
-def root (comuna:str):
+@app.route("/")
+@cross_origin()
+def root ():
+    comuna = request.args.get('comuna')
     url = 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto19/CasosActivosPorComuna.csv'
     df = pd.read_csv(url)
 
@@ -38,3 +34,5 @@ def root (comuna:str):
         "casos": casos[5:]
     }
 
+if __name__ == "__main__":
+	app.run(host="0.0.0.0", port=4000)
