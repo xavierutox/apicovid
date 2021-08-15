@@ -1,13 +1,18 @@
 import pandas as pd
-url = 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto5/TotalesNacionales.csv'
+url = 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto90/incidencia_en_vacunados.csv'
 df = pd.read_csv(url)
-row = df.loc[df["Fecha"]=="Casos nuevos totales"]
-df_list = row.values.tolist()
+df_list = df.values.tolist()
+
 casos=[]
 datos={}
-for i in range(len(df_list[0])):
+for i in range(len(df)):
     datos={}
-    datos["name"]=df.columns[i]
-    datos["casos"]=df_list[0][i]
+    datos["semana"]=df_list[i][0]
+    datos["sin_vacunar"]=df_list[i][13]
+    datos["1_dosis"]=df_list[i][14]
+    datos["2_dosis"]=df_list[i][15]
+    datos["completo"]=df_list[i][16]
+    datos["dosis_unica"]=df_list[i][17]
+    datos["dosis_unica_completo"]=df_list[i][18]
     casos.append(datos)
-print(casos)
+    print(datos)

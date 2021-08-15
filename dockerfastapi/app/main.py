@@ -57,5 +57,58 @@ def casos():
     return {
         "casos": casos[1:]
     }
+@app.route("/Vacunas")
+@cross_origin()
+def vacunas():
+    url = 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto90/incidencia_en_vacunados.csv'
+    df = pd.read_csv(url)
+    df_list = df.values.tolist()
+    casos=[]
+    datos={}
+    tipo = saxutils.unescape(request.args.get('tipo'))
+    tipo = unidecode.unidecode(tipo)
+    print(tipo)
+    if(tipo=="Fallecidos"):
+        for i in range(len(df)):
+            datos={}
+            datos["semana"]=df_list[i][0]
+            datos["sin_vacunar"]=df_list[i][13]
+            datos["1_dosis"]=df_list[i][14]
+            datos["2_dosis"]=df_list[i][15]
+            datos["completo"]=df_list[i][16]
+            datos["dosis_unica"]=df_list[i][17]
+            datos["dosis_unica_completo"]=df_list[i][18]
+            casos.append(datos)
+        return{
+            "casos":casos
+        }
+    elif(tipo=="Ingresos UCI"):
+        for i in range(len(df)):
+            datos={}
+            datos["semana"]=df_list[i][0]
+            datos["sin_vacunar"]=df_list[i][7]
+            datos["1_dosis"]=df_list[i][8]
+            datos["2_dosis"]=df_list[i][9]
+            datos["completo"]=df_list[i][10]
+            datos["dosis_unica"]=df_list[i][11]
+            datos["dosis_unica_completo"]=df_list[i][12]
+            casos.append(datos)
+        return{
+            "casos":casos
+        }
+    elif(tipo=="Casos sintomaticos"):
+        for i in range(len(df)):
+            datos={}
+            datos["semana"]=df_list[i][0]
+            datos["sin_vacunar"]=df_list[i][1]
+            datos["1_dosis"]=df_list[i][2]
+            datos["2_dosis"]=df_list[i][3]
+            datos["completo"]=df_list[i][4]
+            datos["dosis_unica"]=df_list[i][5]
+            datos["dosis_unica_completo"]=df_list[i][6]
+            casos.append(datos)
+        return{
+            "casos":casos
+        }
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", port=4000)
