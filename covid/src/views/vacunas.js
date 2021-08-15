@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 
 function Vacunas(props) {
     useEffect(() => {
-        axios.get("http://localhost:4000/Vacunas", {
+        axios.get("http://3.138.175.135:4000/Vacunas", {
                 params: {
                     "tipo":"Casos sintomaticos"
                 }}).then(async (res) => {
@@ -29,7 +29,7 @@ function Vacunas(props) {
     const axios = require('axios');
     async function buscar2(value){
         if (value!="Chile") {
-            axios.get("http://localhost:4000/Vacunas", {
+            axios.get("http://3.138.175.135:4000/Vacunas", {
                 params: {
                     "tipo":value
                 }}).then(async (res) => {
