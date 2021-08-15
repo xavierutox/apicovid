@@ -4,6 +4,7 @@ import Casos from "./views/casos.js";
 import Vacunas from "./views/vacunas.js";
 import Sobre from "./views/sobre.js";
 import Contacto from "./views/contacto.js";
+import R from "./views/r.js";
 
 import {
   BrowserRouter as Router,
@@ -31,6 +32,7 @@ function App() {
       <Nav className="mr-auto">
             <Nav.Link className="Top" as={Link} to="/Casos">Casos</Nav.Link>
             <Nav.Link className="Top" as={Link} to="/Vacunas">Incidencia Vacunas</Nav.Link>
+            <Nav.Link className="Top" as={Link} to="/R">R efectivo</Nav.Link>
             <Nav.Link className="Top" as={Link} to="/Sobre">Sobre mí</Nav.Link>
             <Nav.Link className="Top" as={Link} to="/Contacto" >Contacto</Nav.Link>
             
@@ -44,11 +46,14 @@ function App() {
           <Route path="/Vacunas">
             <Vacunas />
           </Route>
+          <Route path="/R">
+            <R />
+          </Route>
           <Route path="/Sobre">
-            <Vacunas />
+            <Sobre />
           </Route>
           <Route path="/Contacto">
-            <Vacunas />
+            <Contacto />
           </Route>
           <Route path="/">
             <Casos />

@@ -57,6 +57,22 @@ def casos():
     return {
         "casos": casos[1:]
     }
+@app.route("/R")
+@cross_origin()
+def R():
+    url = 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto54/r.nacional.csv'
+    df = pd.read_csv(url)
+    df_list = df.values.tolist()
+    casos=[]
+    datos={}
+    for i in range(len(df)):
+        datos={}
+        datos["fecha"]=df_list[i][0]
+        datos["r"]=round(df_list[i][1],3)
+        casos.append(datos)
+    return {
+        "casos": casos
+    }
 @app.route("/Vacunas")
 @cross_origin()
 def vacunas():

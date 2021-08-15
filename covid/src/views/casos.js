@@ -477,7 +477,7 @@ function Casos(props) {
             <ResponsiveContainer width="95%" height={400}>
               <LineChart  data={valores}
             margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-            <Line type="monotone" dataKey="casos" stroke="#8884d8" />
+            <Line type="monotone" dataKey="casos" stroke="#8884d8" strokeWidth={2} dot={null}/>
             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
             <XAxis dataKey="name" />
             <YAxis />
