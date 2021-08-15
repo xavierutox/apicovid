@@ -3,6 +3,9 @@ import pandas as pd
 from flask import Flask, request
 from flask_restful import Resource, Api, reqparse
 from flask_cors import CORS, cross_origin
+import xml.sax.saxutils as saxutils
+
+from werkzeug.utils import HTMLBuilder
  
 app = Flask(__name__)
 api = Api(app)
@@ -12,7 +15,10 @@ origins = ["*"]
 @app.route("/")
 @cross_origin()
 def root ():
-    comuna = request.args.get('comuna')
+    comuna = saxutils.unescape(request.args.get('comuna'))
+    print(comuna)
+    comuna = comuna.replace("ñ","n")
+    comuna = comuna.replace("Ñ","N")
     url = 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto19/CasosActivosPorComuna.csv'
     df = pd.read_csv(url)
 
