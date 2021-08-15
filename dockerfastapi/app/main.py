@@ -4,6 +4,7 @@ from flask import Flask, request
 from flask_restful import Resource, Api, reqparse
 from flask_cors import CORS, cross_origin
 import xml.sax.saxutils as saxutils
+import unicode
 
 from werkzeug.utils import HTMLBuilder
  
@@ -16,6 +17,7 @@ origins = ["*"]
 @cross_origin()
 def root ():
     comuna = saxutils.unescape(request.args.get('comuna'))
+    comuna = unidecode.unidecode(comuna)
     print(comuna)
     comuna = comuna.replace("ñ","n")
     comuna = comuna.replace("Ñ","N")

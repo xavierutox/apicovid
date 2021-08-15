@@ -6,8 +6,32 @@ import TextField from '@material-ui/core/TextField';
 import React, {useState, useEffect} from 'react';
 
 function App() {
-  
-  var options = ['',"Arica",
+  useEffect(() => {
+    axios.get("http://3.138.175.135:4000/Casos").then(async (res) => {
+           const data = await res.data.casos;
+           console.log(data)
+           setValores(data)
+           
+           var dif1=Math.round(100*(parseInt(data[data.length - 1].casos)-parseInt(data[data.length - 8].casos))/parseInt(data[data.length - 8].casos))
+           var dif2=Math.round(100*(parseInt(data[data.length - 8].casos)-parseInt(data[data.length - 15].casos))/parseInt(data[data.length - 15].casos))
+           var dif3=Math.round(100*(parseInt(data[data.length - 15].casos)-parseInt(data[data.length - 22].casos))/parseInt(data[data.length - 22].casos))
+           var dif4=Math.round(100*(parseInt(data[data.length - 22].casos)-parseInt(data[data.length - 29].casos))/parseInt(data[data.length - 29].casos))
+            document.getElementById('casos1').innerHTML = "Casos el "+String(data[data.length - 1].name)+": "+String(data[data.length - 1].casos)
+            document.getElementById('casos2').innerHTML = "Casos el "+String(data[data.length - 8].name)+": "+String(data[data.length - 8].casos)+" Diferencia: "+String(dif1)+"%"
+            document.getElementById('casos3').innerHTML = "Casos el "+String(data[data.length - 15].name)+": "+String(data[data.length - 15].casos)+" Diferencia: "+String(dif2)+"%"
+            document.getElementById('casos4').innerHTML = "Casos el "+String(data[data.length - 22].name)+": "+String(data[data.length - 22].casos)+" Diferencia: "+String(dif3)+"%"
+            document.getElementById('casos5').innerHTML = "Casos el "+String(data[data.length - 29].name)+": "+String(data[data.length - 29].casos)+" Diferencia: "+String(dif4)+"%"
+            var resultado = 'Chile'
+           setEstado(resultado)
+           document.getElementById('nombre').innerHTML = "Casos en Chile"
+
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+  }, []);
+
+  var options = ['',"Chile","Arica",
   "Camarones",
   "General Lagos",
   "Putre",
@@ -355,15 +379,38 @@ function App() {
 
   options= options.sort()
 
-  const [value, setValue] = React.useState(options[0]);
+  const [value, setValue] = React.useState("Chile");
   const [inputValue, setInputValue] = React.useState('');
   const [valores, setValores] = useState([]);
   const [estado, setEstado] = useState('');
 
   const axios = require('axios');
   async function buscar(value){
-    
-    axios.get("http://3.138.175.135:4000/", {
+    if (value==="Chile") {
+      axios.get("http://3.138.175.135:4000/Casos").then(async (res) => {
+           const data = await res.data.casos;
+           console.log(data)
+           setValores(data)
+           
+           var dif1=Math.round(100*(parseInt(data[data.length - 1].casos)-parseInt(data[data.length - 8].casos))/parseInt(data[data.length - 8].casos))
+           var dif2=Math.round(100*(parseInt(data[data.length - 8].casos)-parseInt(data[data.length - 15].casos))/parseInt(data[data.length - 15].casos))
+           var dif3=Math.round(100*(parseInt(data[data.length - 15].casos)-parseInt(data[data.length - 22].casos))/parseInt(data[data.length - 22].casos))
+           var dif4=Math.round(100*(parseInt(data[data.length - 22].casos)-parseInt(data[data.length - 29].casos))/parseInt(data[data.length - 29].casos))
+            document.getElementById('casos1').innerHTML = "Casos el "+String(data[data.length - 1].name)+": "+String(data[data.length - 1].casos)
+            document.getElementById('casos2').innerHTML = "Casos el "+String(data[data.length - 8].name)+": "+String(data[data.length - 8].casos)+" Diferencia: "+String(dif1)+"%"
+            document.getElementById('casos3').innerHTML = "Casos el "+String(data[data.length - 15].name)+": "+String(data[data.length - 15].casos)+" Diferencia: "+String(dif2)+"%"
+            document.getElementById('casos4').innerHTML = "Casos el "+String(data[data.length - 22].name)+": "+String(data[data.length - 22].casos)+" Diferencia: "+String(dif3)+"%"
+            document.getElementById('casos5').innerHTML = "Casos el "+String(data[data.length - 29].name)+": "+String(data[data.length - 29].casos)+" Diferencia: "+String(dif4)+"%"
+            var resultado = 'Chile'
+           setEstado(resultado)
+           document.getElementById('nombre').innerHTML = "Casos en Chile"
+
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    } else {
+      axios.get("http://3.138.175.135:4000/", {
         params: {
             "comuna":value
         }}).then(async (res) => {
@@ -371,20 +418,24 @@ function App() {
            console.log(data)
            setValores(data)
            
-           var dif1=parseInt(100*(parseInt(data[data.length - 1].casos)-parseInt(data[data.length - 2].casos))/parseInt(data[data.length - 2].casos))
-           var dif2=parseInt(100*(parseInt(data[data.length - 1].casos)-parseInt(data[data.length - 3].casos))/parseInt(data[data.length - 3].casos))
+           var dif1=Math.round(100*(parseInt(data[data.length - 1].casos)-parseInt(data[data.length - 2].casos))/parseInt(data[data.length - 2].casos))
+           var dif2=Math.round(100*(parseInt(data[data.length - 2].casos)-parseInt(data[data.length - 3].casos))/parseInt(data[data.length - 3].casos))
+           var dif3=Math.round(100*(parseInt(data[data.length - 3].casos)-parseInt(data[data.length - 4].casos))/parseInt(data[data.length - 4].casos))
+           var dif4=Math.round(100*(parseInt(data[data.length - 4].casos)-parseInt(data[data.length - 5].casos))/parseInt(data[data.length - 5].casos))
             document.getElementById('casos1').innerHTML = "Casos el "+String(data[data.length - 1].name)+": "+String(data[data.length - 1].casos)
             document.getElementById('casos2').innerHTML = "Casos el "+String(data[data.length - 2].name)+": "+String(data[data.length - 2].casos)+" Diferencia: "+String(dif1)+"%"
             document.getElementById('casos3').innerHTML = "Casos el "+String(data[data.length - 3].name)+": "+String(data[data.length - 3].casos)+" Diferencia: "+String(dif2)+"%"
-            var resultado = 'aa'
+            document.getElementById('casos4').innerHTML = "Casos el "+String(data[data.length - 4].name)+": "+String(data[data.length - 4].casos)+" Diferencia: "+String(dif3)+"%"
+            document.getElementById('casos5').innerHTML = "Casos el "+String(data[data.length - 5].name)+": "+String(data[data.length - 5].casos)+" Diferencia: "+String(dif4)+"%"
+            var resultado = value
            setEstado(resultado)
+           document.getElementById('nombre').innerHTML = "Casos en "+ String(value)
 
         })
         .catch((err) => {
             console.log(err);
         });
-    
-    
+    }
     
   }
 
@@ -394,6 +445,7 @@ function App() {
       <header className="App-header2">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />  
+      <h1 id='nombre'></h1>
       </header>
       <body>
         <div  style={{
@@ -415,7 +467,7 @@ function App() {
           id="combo-box-demo"
           options={options}
           style={{ width: 300 }}
-          renderInput={(params) => <TextField {...params} label="Seleccionar comuna" variant="outlined"/>}
+          renderInput={(params) => <TextField {...params} label="Seleccionar comuna" variant="outlined" defaultValue="Chile"/>}
         />
       </div>
       <div>
@@ -439,6 +491,8 @@ function App() {
       <p id='casos1'></p>
       <p id='casos2'></p>
       <p id='casos3'></p>
+      <p id='casos4'></p>
+      <p id='casos5'></p>
       </div>
       </body>
       
