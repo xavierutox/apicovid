@@ -7,7 +7,7 @@ import React, {useState, useEffect} from 'react';
 
 function App() {
   useEffect(() => {
-    axios.get("http://3.138.175.135:4000/Casos").then(async (res) => {
+    axios.get("https://3.138.175.135:4000/Casos").then(async (res) => {
            const data = await res.data.casos;
            console.log(data)
            setValores(data)
@@ -387,7 +387,7 @@ function App() {
   const axios = require('axios');
   async function buscar(value){
     if (value==="Chile") {
-      axios.get("http://3.138.175.135:4000/Casos").then(async (res) => {
+      axios.get("https://3.138.175.135:4000/Casos").then(async (res) => {
            const data = await res.data.casos;
            console.log(data)
            setValores(data)
@@ -410,7 +410,7 @@ function App() {
             console.log(err);
         });
     } else {
-      axios.get("http://3.138.175.135:4000/", {
+      axios.get("https://3.138.175.135:4000/", {
         params: {
             "comuna":value
         }}).then(async (res) => {
@@ -443,6 +443,9 @@ function App() {
     
     <div className="App">
       <header className="App-header2">
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8277816264630890"
+     crossorigin="anonymous"></script>
+     
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />  
       <h1 id='nombre'></h1>
