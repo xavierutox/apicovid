@@ -4,7 +4,7 @@ from flask import Flask, request
 from flask_restful import Resource, Api, reqparse
 from flask_cors import CORS, cross_origin
 import xml.sax.saxutils as saxutils
-import unicode
+import unidecode
 
 from werkzeug.utils import HTMLBuilder
  
