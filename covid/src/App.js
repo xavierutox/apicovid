@@ -16,7 +16,7 @@ function App() {
   const axios = require('axios');
   async function buscar(value){
     
-    axios.get("http://127.0.0.1:4000/", {
+    axios.get("http://3.138.175.135:4000/", {
         params: {
             "comuna":value
         }}).then(async (res) => {
