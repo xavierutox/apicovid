@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 
 function R(props) {
     useEffect(() => {
-        axios.get("http://localhost:4000/R").then(async (res) => {
+        axios.get("http://3.138.175.135:4000/R").then(async (res) => {
                    const data = await res.data.casos;
                    console.log(data)
                    setValores3(data)
