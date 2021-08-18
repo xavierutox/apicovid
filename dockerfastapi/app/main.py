@@ -126,5 +126,79 @@ def vacunas():
         return{
             "casos":casos
         }
+@app.route("/Positividad")
+@cross_origin()
+def posititivad():
+    url = 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto49/Positividad_Diaria_Media.csv'
+    df = pd.read_csv(url)
+    df_list = df.values.tolist()
+    tipo = saxutils.unescape(request.args.get('tipo'))
+    tipo = unidecode.unidecode(tipo)
+    print(tipo)
+    if(tipo=="Lunes"):
+        Incidencia=[] #lunes
+        columnas=df.columns[1:]
+        data=df_list[3][1:]
+        for i in range(5,len(df_list[0]),7):
+            datos={}
+            datos["dia"]=columnas[i]
+            datos["positividad"]=round(data[i]*100,2)
+            Incidencia.append(datos)
+    elif(tipo=="Martes"):
+        Incidencia=[] #martes
+        columnas=df.columns[1:]
+        data=df_list[3][1:]
+        for i in range(6,len(df_list[0]),7):
+            datos={}
+            datos["dia"]=columnas[i]
+            datos["positividad"]=round(data[i]*100,2)
+            Incidencia.append(datos)
+    elif(tipo=="Miercoles"):
+        Incidencia=[] #miercoles
+        columnas=df.columns[1:]
+        data=df_list[3][1:]
+        for i in range(0,len(df_list[0]),7):
+            datos={}
+            datos["dia"]=columnas[i]
+            datos["positividad"]=round(data[i]*100,2)
+            Incidencia.append(datos)
+    elif(tipo=="Jueves"):
+        Incidencia=[] #jueves
+        columnas=df.columns[1:]
+        data=df_list[3][1:]
+        for i in range(1,len(df_list[0]),7):
+            datos={}
+            datos["dia"]=columnas[i]
+            datos["positividad"]=round(data[i]*100,2)
+            Incidencia.append(datos)
+    elif(tipo=="Viernes"):
+        Incidencia=[] #viernes
+        columnas=df.columns[1:]
+        data=df_list[3][1:]
+        for i in range(2,len(df_list[0]),7):
+            datos={}
+            datos["dia"]=columnas[i]
+            datos["positividad"]=round(data[i]*100,2)
+            Incidencia.append(datos)
+    elif(tipo=="Sabado"):
+        Incidencia=[] #sabado
+        columnas=df.columns[1:]
+        data=df_list[3][1:]
+        for i in range(3,len(df_list[0]),7):
+            datos={}
+            datos["dia"]=columnas[i]
+            datos["positividad"]=round(data[i]*100,2)
+            Incidencia.append(datos)
+    elif(tipo=="Domingo"):
+        Incidencia=[] #domingo
+        columnas=df.columns[1:]
+        data=df_list[3][1:]
+        for i in range(4,len(df_list[0]),7):
+            datos={}
+            datos["dia"]=columnas[i]
+            datos["positividad"]=round(data[i]*100,2)
+            Incidencia.append(datos)
+    return{"Incidencia":Incidencia}
+    
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", port=4000)

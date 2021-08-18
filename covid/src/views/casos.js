@@ -14,14 +14,13 @@ function Casos(props) {
                var dif2=Math.round(100*(parseInt(data[data.length - 8].casos)-parseInt(data[data.length - 15].casos))/parseInt(data[data.length - 15].casos))
                var dif3=Math.round(100*(parseInt(data[data.length - 15].casos)-parseInt(data[data.length - 22].casos))/parseInt(data[data.length - 22].casos))
                var dif4=Math.round(100*(parseInt(data[data.length - 22].casos)-parseInt(data[data.length - 29].casos))/parseInt(data[data.length - 29].casos))
-                document.getElementById('casos1').innerHTML = "Casos el "+String(data[data.length - 1].name)+": "+String(data[data.length - 1].casos)
                 document.getElementById('casos2').innerHTML = "Casos el "+String(data[data.length - 8].name)+": "+String(data[data.length - 8].casos)+" Diferencia: "+String(dif1)+"%"
                 document.getElementById('casos3').innerHTML = "Casos el "+String(data[data.length - 15].name)+": "+String(data[data.length - 15].casos)+" Diferencia: "+String(dif2)+"%"
                 document.getElementById('casos4').innerHTML = "Casos el "+String(data[data.length - 22].name)+": "+String(data[data.length - 22].casos)+" Diferencia: "+String(dif3)+"%"
                 document.getElementById('casos5').innerHTML = "Casos el "+String(data[data.length - 29].name)+": "+String(data[data.length - 29].casos)+" Diferencia: "+String(dif4)+"%"
                 var resultado = 'Chile'
                setEstado(resultado)
-               document.getElementById('nombre').innerHTML = "Casos en Chile"
+               document.getElementById('nombre').innerHTML = "Casos en Chile = "+ String(data[data.length - 1].casos)
     
             })
             .catch((err) => {
@@ -394,14 +393,13 @@ function Casos(props) {
                var dif2=Math.round(100*(parseInt(data[data.length - 8].casos)-parseInt(data[data.length - 15].casos))/parseInt(data[data.length - 15].casos))
                var dif3=Math.round(100*(parseInt(data[data.length - 15].casos)-parseInt(data[data.length - 22].casos))/parseInt(data[data.length - 22].casos))
                var dif4=Math.round(100*(parseInt(data[data.length - 22].casos)-parseInt(data[data.length - 29].casos))/parseInt(data[data.length - 29].casos))
-                document.getElementById('casos1').innerHTML = "Casos el "+String(data[data.length - 1].name)+": "+String(data[data.length - 1].casos)
                 document.getElementById('casos2').innerHTML = "Casos el "+String(data[data.length - 8].name)+": "+String(data[data.length - 8].casos)+" Diferencia: "+String(dif1)+"%"
                 document.getElementById('casos3').innerHTML = "Casos el "+String(data[data.length - 15].name)+": "+String(data[data.length - 15].casos)+" Diferencia: "+String(dif2)+"%"
                 document.getElementById('casos4').innerHTML = "Casos el "+String(data[data.length - 22].name)+": "+String(data[data.length - 22].casos)+" Diferencia: "+String(dif3)+"%"
                 document.getElementById('casos5').innerHTML = "Casos el "+String(data[data.length - 29].name)+": "+String(data[data.length - 29].casos)+" Diferencia: "+String(dif4)+"%"
                 var resultado = 'Chile'
                setEstado(resultado)
-               document.getElementById('nombre').innerHTML = "Casos en Chile"
+               document.getElementById('nombre').innerHTML = "Casos en Chile = " + String(data[data.length - 1].casos)
     
             })
             .catch((err) => {
@@ -420,14 +418,13 @@ function Casos(props) {
                var dif2=Math.round(100*(parseInt(data[data.length - 2].casos)-parseInt(data[data.length - 3].casos))/parseInt(data[data.length - 3].casos))
                var dif3=Math.round(100*(parseInt(data[data.length - 3].casos)-parseInt(data[data.length - 4].casos))/parseInt(data[data.length - 4].casos))
                var dif4=Math.round(100*(parseInt(data[data.length - 4].casos)-parseInt(data[data.length - 5].casos))/parseInt(data[data.length - 5].casos))
-                document.getElementById('casos1').innerHTML = "Casos el "+String(data[data.length - 1].name)+": "+String(data[data.length - 1].casos)
                 document.getElementById('casos2').innerHTML = "Casos el "+String(data[data.length - 2].name)+": "+String(data[data.length - 2].casos)+" Diferencia: "+String(dif1)+"%"
                 document.getElementById('casos3').innerHTML = "Casos el "+String(data[data.length - 3].name)+": "+String(data[data.length - 3].casos)+" Diferencia: "+String(dif2)+"%"
                 document.getElementById('casos4').innerHTML = "Casos el "+String(data[data.length - 4].name)+": "+String(data[data.length - 4].casos)+" Diferencia: "+String(dif3)+"%"
                 document.getElementById('casos5').innerHTML = "Casos el "+String(data[data.length - 5].name)+": "+String(data[data.length - 5].casos)+" Diferencia: "+String(dif4)+"%"
                 var resultado = value
                setEstado(resultado)
-               document.getElementById('nombre').innerHTML = "Casos en "+ String(value)
+               document.getElementById('nombre').innerHTML = "Casos en "+ String(value) +" = "+ String(data[data.length - 1].casos)
     
             })
             .catch((err) => {

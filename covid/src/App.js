@@ -5,6 +5,7 @@ import Vacunas from "./views/vacunas.js";
 import Sobre from "./views/sobre.js";
 import Contacto from "./views/contacto.js";
 import R from "./views/r.js";
+import Positividad from "./views/positividad.js";
 
 import {
   BrowserRouter as Router,
@@ -33,9 +34,7 @@ function App() {
             <Nav.Link className="Top" as={Link} to="/Casos">Casos</Nav.Link>
             <Nav.Link className="Top" as={Link} to="/Vacunas">Incidencia Vacunas</Nav.Link>
             <Nav.Link className="Top" as={Link} to="/R">R efectivo</Nav.Link>
-            <Nav.Link className="Top" as={Link} to="/Sobre">Sobre mí</Nav.Link>
-            <Nav.Link className="Top" as={Link} to="/Contacto" >Contacto</Nav.Link>
-            
+            <Nav.Link className="Top" as={Link} to="/positividad">Positividad semanal</Nav.Link>
           </Nav>
       </Navbar.Collapse>
     </Navbar>
@@ -49,11 +48,8 @@ function App() {
           <Route path="/R">
             <R />
           </Route>
-          <Route path="/Sobre">
-            <Sobre />
-          </Route>
-          <Route path="/Contacto">
-            <Contacto />
+          <Route path="/Positividad">
+            <Positividad/>
           </Route>
           <Route path="/">
             <Casos />

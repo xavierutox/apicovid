@@ -11,7 +11,11 @@ function R(props) {
                    setValores3(data)
                     var resultado = "R"
                    setEstado3(resultado)
-                   document.getElementById('nombre').innerHTML = "Número de reproducción efectivo"
+                   document.getElementById('nombre').innerHTML = "Número de reproducción efectivo el " + String(data[data.length - 2].fecha)+" = "+String(data[data.length-1].r)
+                   document.getElementById('casos1111').innerHTML = "Número de reproducción efectivo el "+ String(data[data.length - 2].fecha)+" = "+String(data[data.length - 2].r)
+                    document.getElementById('casos2111').innerHTML = "Número de reproducción efectivo el "+ String(data[data.length - 3].fecha)+" = "+String(data[data.length - 3].r)
+                    document.getElementById('casos3111').innerHTML = "Número de reproducción efectivo el "+ String(data[data.length - 4].fecha)+" = "+String(data[data.length - 4].r)
+                    document.getElementById('casos4111').innerHTML = "Número de reproducción efectivo el "+ String(data[data.length - 5].fecha)+" = "+String(data[data.length - 5].r)
         
                 })
                 .catch((err) => {
@@ -69,11 +73,11 @@ function R(props) {
             
         </div>
         <div>
-        <p id='casos11'></p>
-        <p id='casos21'></p>
-        <p id='casos31'></p>
-        <p id='casos41'></p>
-        <p id='casos51'></p>
+        <p id='casos1111'></p>
+        <p id='casos2111'></p>
+        <p id='casos3111'></p>
+        <p id='casos4111'></p>
+        <p id='casos5111'></p>
         </div>
         </body>
         </div>
