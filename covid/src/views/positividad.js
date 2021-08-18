@@ -7,7 +7,7 @@ function Vacunas(props) {
     var days = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
     var dayName = days[new Date().getDay()];
     useEffect(() => {
-        axios.get("http://localhost:4000/Positividad", {
+        axios.get("http://3.138.175.135:4000/Positividad", {
                 params: {
                     "tipo":dayName
                 }}).then(async (res) => {
@@ -35,7 +35,7 @@ function Vacunas(props) {
     const axios = require('axios');
     async function buscar2(value){
         if (value!="Chile") {
-            axios.get("http://localhost:4000/Positividad", {
+            axios.get("http://3.138.175.135:4000/Positividad", {
                 params: {
                     "tipo":value
                 }}).then(async (res) => {

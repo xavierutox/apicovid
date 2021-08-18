@@ -140,64 +140,85 @@ def posititivad():
         columnas=df.columns[1:]
         data=df_list[3][1:]
         for i in range(5,len(df_list[0]),7):
-            datos={}
-            datos["dia"]=columnas[i]
-            datos["positividad"]=round(data[i]*100,2)
-            Incidencia.append(datos)
+            try:
+                datos={}
+                datos["dia"]=columnas[i]
+                datos["positividad"]=round(data[i]*100,2)
+                Incidencia.append(datos)
+            except:
+                break
     elif(tipo=="Martes"):
         Incidencia=[] #martes
         columnas=df.columns[1:]
         data=df_list[3][1:]
         for i in range(6,len(df_list[0]),7):
-            datos={}
-            datos["dia"]=columnas[i]
-            datos["positividad"]=round(data[i]*100,2)
-            Incidencia.append(datos)
+            try:
+                datos={}
+                datos["dia"]=columnas[i]
+                datos["positividad"]=round(data[i]*100,2)
+                Incidencia.append(datos)
+            except:
+                break
     elif(tipo=="Miercoles"):
         Incidencia=[] #miercoles
         columnas=df.columns[1:]
         data=df_list[3][1:]
         for i in range(0,len(df_list[0]),7):
-            datos={}
-            datos["dia"]=columnas[i]
-            datos["positividad"]=round(data[i]*100,2)
-            Incidencia.append(datos)
+            try:
+                datos={}
+                datos["dia"]=columnas[i]
+                datos["positividad"]=round(data[i]*100,2)
+                Incidencia.append(datos)
+            except:
+                break
     elif(tipo=="Jueves"):
         Incidencia=[] #jueves
         columnas=df.columns[1:]
         data=df_list[3][1:]
         for i in range(1,len(df_list[0]),7):
-            datos={}
-            datos["dia"]=columnas[i]
-            datos["positividad"]=round(data[i]*100,2)
-            Incidencia.append(datos)
+            try:
+                datos={}
+                datos["dia"]=columnas[i]
+                datos["positividad"]=round(data[i]*100,2)
+                Incidencia.append(datos)
+            except:
+                break
     elif(tipo=="Viernes"):
         Incidencia=[] #viernes
         columnas=df.columns[1:]
         data=df_list[3][1:]
         for i in range(2,len(df_list[0]),7):
-            datos={}
-            datos["dia"]=columnas[i]
-            datos["positividad"]=round(data[i]*100,2)
-            Incidencia.append(datos)
+            try:
+                datos={}
+                datos["dia"]=columnas[i]
+                datos["positividad"]=round(data[i]*100,2)
+                Incidencia.append(datos)
+            except:
+                break
     elif(tipo=="Sabado"):
         Incidencia=[] #sabado
         columnas=df.columns[1:]
         data=df_list[3][1:]
         for i in range(3,len(df_list[0]),7):
-            datos={}
-            datos["dia"]=columnas[i]
-            datos["positividad"]=round(data[i]*100,2)
-            Incidencia.append(datos)
+            try:
+                datos={}
+                datos["dia"]=columnas[i]
+                datos["positividad"]=round(data[i]*100,2)
+                Incidencia.append(datos)
+            except:
+                break
     elif(tipo=="Domingo"):
         Incidencia=[] #domingo
         columnas=df.columns[1:]
         data=df_list[3][1:]
         for i in range(4,len(df_list[0]),7):
-            datos={}
-            datos["dia"]=columnas[i]
-            datos["positividad"]=round(data[i]*100,2)
-            Incidencia.append(datos)
+            try:
+                datos={}
+                datos["dia"]=columnas[i]
+                datos["positividad"]=round(data[i]*100,2)
+                Incidencia.append(datos)
+            except:
+                break
     return{"Incidencia":Incidencia}
     
 if __name__ == "__main__":

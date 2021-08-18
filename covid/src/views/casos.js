@@ -249,7 +249,7 @@ function Casos(props) {
       "Antuco",
       "Arauco",
       "Cabrero",
-      "Cañete",
+      "Canete",
       "Chiguayante",
       "Concepción",
       "Contulmo",
