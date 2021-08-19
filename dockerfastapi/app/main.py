@@ -260,7 +260,7 @@ def pcr():
         try:
             datos={}
             datos["name"]=df.columns[i]
-            datos["pcr"]=df_list[0][i]-df_list[0][i-1]
+            datos["pcr"]=df_list[0][i]
         except:
             datos={}
             datos["name"]=df.columns[i]
