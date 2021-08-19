@@ -219,6 +219,18 @@ def posititivad():
                 Incidencia.append(datos)
             except:
                 break
+    elif(tipo=="Todos"):
+        Incidencia=[] #domingo
+        columnas=df.columns[1:]
+        data=df_list[3][1:]
+        for i in range(len(df_list[0])):
+            try:
+                datos={}
+                datos["dia"]=columnas[i]
+                datos["positividad"]=round(data[i]*100,2)
+                Incidencia.append(datos)
+            except:
+                break
     return{"Incidencia":Incidencia}
 
 @app.route("/Fallecidos")
