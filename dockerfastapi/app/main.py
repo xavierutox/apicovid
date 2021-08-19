@@ -243,5 +243,31 @@ def fallecidos():
     return {
         "fallecidos": casos[1:]
     }
+@app.route("/Pcr")
+@cross_origin()
+def pcr():
+    url = 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto49/Positividad_Diaria_Media.csv'
+    df = pd.read_csv(url)
+    tipo = saxutils.unescape(request.args.get('tipo'))
+    tipo = unidecode.unidecode(tipo)
+    if tipo=="positividad":
+        tipo="positividad pcr"
+    row = df.loc[df["Fecha"]==tipo]
+    df_list = row.values.tolist()
+    casos=[]
+    datos={}
+    for i in range(len(df_list[0])):
+        try:
+            datos={}
+            datos["name"]=df.columns[i]
+            datos["pcr"]=df_list[0][i]-df_list[0][i-1]
+        except:
+            datos={}
+            datos["name"]=df.columns[i]
+            datos["pcr"]=df_list[0][i]
+        casos.append(datos)
+    return {
+        "pcr": casos[1:]
+    }
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", port=4000)
