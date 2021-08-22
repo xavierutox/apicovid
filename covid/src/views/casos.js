@@ -383,29 +383,6 @@ function Casos(props) {
     
       const axios = require('axios');
       async function buscar(value){
-        if (value==="Chile") {
-          axios.get("http://3.138.175.135:4000/Casos").then(async (res) => {
-               const data = await res.data.casos;
-               console.log(data)
-               setValores(data)
-               
-               var dif1=Math.round(100*(parseInt(data[data.length - 1].casos)-parseInt(data[data.length - 8].casos))/parseInt(data[data.length - 8].casos))
-               var dif2=Math.round(100*(parseInt(data[data.length - 8].casos)-parseInt(data[data.length - 15].casos))/parseInt(data[data.length - 15].casos))
-               var dif3=Math.round(100*(parseInt(data[data.length - 15].casos)-parseInt(data[data.length - 22].casos))/parseInt(data[data.length - 22].casos))
-               var dif4=Math.round(100*(parseInt(data[data.length - 22].casos)-parseInt(data[data.length - 29].casos))/parseInt(data[data.length - 29].casos))
-                document.getElementById('casos2').innerHTML = "Casos el "+String(data[data.length - 8].name)+": "+String(data[data.length - 8].casos)+" Diferencia: "+String(dif1)+"%"
-                document.getElementById('casos3').innerHTML = "Casos el "+String(data[data.length - 15].name)+": "+String(data[data.length - 15].casos)+" Diferencia: "+String(dif2)+"%"
-                document.getElementById('casos4').innerHTML = "Casos el "+String(data[data.length - 22].name)+": "+String(data[data.length - 22].casos)+" Diferencia: "+String(dif3)+"%"
-                document.getElementById('casos5').innerHTML = "Casos el "+String(data[data.length - 29].name)+": "+String(data[data.length - 29].casos)+" Diferencia: "+String(dif4)+"%"
-                var resultado = 'Chile'
-               setEstado(resultado)
-               document.getElementById('nombre').innerHTML = "Casos en Chile = " + String(data[data.length - 1].casos)
-    
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-        } else {
           axios.get("http://3.138.175.135:4000/", {
             params: {
                 "comuna":value
@@ -430,7 +407,6 @@ function Casos(props) {
             .catch((err) => {
                 console.log(err);
             });
-        }
         
       }
     

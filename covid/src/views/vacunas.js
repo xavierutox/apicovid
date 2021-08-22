@@ -28,23 +28,21 @@ function Vacunas(props) {
     const [estado2, setEstado2] = useState('');
     const axios = require('axios');
     async function buscar2(value){
-        if (value!="Chile") {
-            axios.get("http://3.138.175.135:4000/Vacunas", {
-                params: {
-                    "tipo":value
-                }}).then(async (res) => {
-                   const data = await res.data.casos;
-                   console.log(data)
-                   setValores2(data)
-                    var resultado = value
-                   setEstado2(resultado)
-                   document.getElementById('nombre').innerHTML = "Inicidencia "+ String(value)
-        
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        }
+        axios.get("http://3.138.175.135:4000/Vacunas", {
+            params: {
+                "tipo":value
+            }}).then(async (res) => {
+                const data = await res.data.casos;
+                console.log(data)
+                setValores2(data)
+                var resultado = value
+                setEstado2(resultado)
+                document.getElementById('nombre').innerHTML = "Inicidencia "+ String(value)
+    
+            })
+            .catch((err) => {
+                console.log(err);
+            }); 
     }
     return (
     
