@@ -369,14 +369,20 @@ def totalesVacunas():
     vacunas={}
     vacunas["Total"]=0
     for dato in datos:
+        
         if (dato[2] not in vacunas.keys()):
             vacunas[dato[2]]=dato[3]
             vacunas["Total"]=vacunas["Total"]+dato[3]
         else:
             vacunas[dato[2]]=vacunas[dato[2]]+dato[3]
             vacunas["Total"]=vacunas["Total"]+dato[3]
+    for i in vacunas.keys():
+        dic={}
+        dic["name"]=i
+        dic["vacunas"]=vacunas[i]
+        linea2.append(dic)
     return{
-        "casos":vacunas
+        "casos":linea2
     }
 
 if __name__ == "__main__":
