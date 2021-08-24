@@ -357,5 +357,27 @@ def avanceEdad():
             casos115,casos1530,casos3045,casos4560,casos6075,casos7590,casos90,meta
         ]
     }
+
+@app.route("/TotalesVacunas")
+@cross_origin()
+def totalesVacunas():
+    url = 'https://raw.githubusercontent.com/loqueelvientoajuarez/campana-vacunacion-covid-19/main/output/contrib/vacunas_importadas_fabricante_fecha.csv'
+    df2 = pd.read_csv(url)
+    df_list = df2.values.tolist()
+    datos=df_list
+    linea2=[]
+    vacunas={}
+    vacunas["Total"]=0
+    for dato in datos:
+        if (dato[2] not in vacunas.keys()):
+            vacunas[dato[2]]=dato[3]
+            vacunas["Total"]=vacunas["Total"]+dato[3]
+        else:
+            vacunas[dato[2]]=vacunas[dato[2]]+dato[3]
+            vacunas["Total"]=vacunas["Total"]+dato[3]
+    return{
+        "casos":vacunas
+    }
+
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", port=4000)

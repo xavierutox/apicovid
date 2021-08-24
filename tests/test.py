@@ -32,19 +32,16 @@ import csv
 #    write.writerows(linea2)
 
 
-url = 'https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto50/DefuncionesDEIS_confirmadosPorComuna.csv'
+url = 'https://raw.githubusercontent.com/loqueelvientoajuarez/campana-vacunacion-covid-19/main/output/contrib/vacunas_importadas_fabricante_fecha.csv'
 df2 = pd.read_csv(url)
 df_list = df2.values.tolist()
 datos=df_list
 linea2=[]
+vacunas={}
 for dato in datos:
-    for i in range(5,len(dato)):
-        if (dato[2]!="Total"):
-            linea2.append([dato[2],dato[i]/dato[4]*100000,df2.columns[i]])
-fields=["Comuna","Fallecidos","Fecha"]
-
-with open('Producto3.csv','w') as f:
-    write = csv.writer(f)
-    write.writerow(fields)
-    write.writerows(linea2)
+    if (dato[2] not in vacunas.keys()):
+        vacunas[dato[2]]=dato[3]
+    else:
+        vacunas[dato[2]]=vacunas[dato[2]]+dato[3]
+print(vacunas)
 
