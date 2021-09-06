@@ -1,4 +1,4 @@
 API de chieldata.xyz
 
 
-Pendiente de documentacion 
+Documentación en https://xavierutox.gitbook.io/chiledata/api/
