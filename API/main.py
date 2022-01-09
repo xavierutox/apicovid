@@ -88,12 +88,13 @@ def vacunas():
         for i in range(len(df)):
             datos={}
             datos["semana"]=df_list[i][0]
-            datos["sin_vacunar"]=df_list[i][13]
-            datos["1_dosis"]=df_list[i][14]
-            datos["2_dosis"]=df_list[i][15]
-            datos["completo"]=df_list[i][16]
-            datos["dosis_unica"]=df_list[i][17]
-            datos["dosis_unica_completo"]=df_list[i][18]
+            datos["sin_vacunar"]=df_list[i][15]
+            datos["1_dosis"]=df_list[i][16]
+            datos["2_dosis"]=df_list[i][17]
+            datos["completo"]=df_list[i][18]
+            datos["dosis_unica"]=df_list[i][19]
+            datos["dosis_unica_completo"]=df_list[i][20]
+            datos["refuerzo"]=df_list[i][21]
             casos.append(datos)
         return{
             "casos":casos
@@ -108,6 +109,7 @@ def vacunas():
             datos["completo"]=df_list[i][10]
             datos["dosis_unica"]=df_list[i][11]
             datos["dosis_unica_completo"]=df_list[i][12]
+            datos["refuerzo"]=df_list[i][13]
             casos.append(datos)
         return{
             "casos":casos
@@ -122,6 +124,7 @@ def vacunas():
             datos["completo"]=df_list[i][4]
             datos["dosis_unica"]=df_list[i][5]
             datos["dosis_unica_completo"]=df_list[i][6]
+            datos["refuerzo"]=df_list[i][7]
             casos.append(datos)
         return{
             "casos":casos
