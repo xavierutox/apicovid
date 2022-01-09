@@ -287,7 +287,7 @@ def pcr():
 @app.route("/AvanceEdad")
 @cross_origin()
 def avanceEdad():
-    url = 'https://raw.githubusercontent.com/xavierutox/campana-vacunacion-covid-19/main/output/contrib/fraccion_vacunados_edad.csv'
+    url = 'https://raw.githubusercontent.com/loqueelvientoajuarez/campana-vacunacion-covid-19/main/output/contrib/fraccion_vacunados_edad.csv'
     df = pd.read_csv(url)
     df_list = df.values.tolist()
     casos115={}
@@ -316,7 +316,7 @@ def avanceEdad():
 
     datos={}
 
-    for (edad,_,_,_,_,_,inmunidad) in df_list:
+    for (edad,_,_,_,_,_,_,inmunidad) in df_list:
         if (edad<15):
             casos115["inmunidad"]=casos115["inmunidad"]+inmunidad
         elif(15<=edad<30):
